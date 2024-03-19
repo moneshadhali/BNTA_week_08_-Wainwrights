@@ -1,6 +1,13 @@
 let dataWainwrights;
 const wainwrightsList = document.getElementById("wainwrights-list"); //ul
 const wainwrightsContainer = document.getElementById("wainwrightsContainer"); //section
+const wainwrightsHeader = document.getElementById("wainwrights-header"); //h1
+
+//Header Message
+const headerMessage = (text) => {
+    wainwrightsHeader.innerText = "";
+    wainwrightsHeader.innerText = text;
+}
 
 //Get data from form
 const form = document.getElementById("WainwrightForm");
@@ -9,6 +16,7 @@ form.addEventListener("submit", (evt) => {
     let userInput = evt.target[0].value;
 
     wainwrightsList.innerHTML = "";
+    headerMessage("Filtering Result");
 
     //FILTERING the wainwrightsList
     const filterResult = dataWainwrights.filter(element => element.name.toLowerCase().includes(userInput.toLowerCase()));
@@ -19,6 +27,7 @@ form.addEventListener("submit", (evt) => {
         errorMsg.innerText = "The query entered does not exist inside the array"
         wainwrightsContainer.appendChild(errorMsg);
     }
+    headerMessage("JS Wainwrights Lab");
 })
 
 
@@ -27,7 +36,8 @@ const getAllWainwrights = async () => {
     const response = await fetch("https://raw.githubusercontent.com/annahndr/annahndr.github.io/master/wainwrights_data/wainwrights.json")
     const data =  await response.json();
     dataWainwrights = data;
-    mapWainwrights(data);
+    headerMessage("Awaiting API...");
+    mapWainwrights(data); 
 }
 
 
@@ -38,6 +48,7 @@ const mapWainwrights = (dataWainwrights) => {
         console.log(item);
         wainwrightsListItem(item);
     }
+    headerMessage("JS Wainwrights Lab");
 }
 
 //Creating and populating Item inside wainwrightsLists
