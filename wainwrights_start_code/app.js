@@ -8,7 +8,12 @@ form.addEventListener("submit", (evt) => {
     evt.preventDefault();
     let userInput = evt.target[0].value;
 
-    console.log(userInput);
+    wainwrightsList.innerHTML = "";
+
+    //FILTERING the wainwrightsList
+    const filterResult = dataWainwrights.filter(element => element.name.toLowerCase().includes(userInput.toLowerCase()));
+    mapWainwrights(filterResult);
+
 })
 
 
