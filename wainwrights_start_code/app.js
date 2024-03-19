@@ -34,10 +34,12 @@ form.addEventListener("submit", (evt) => {
 //GET all Wainwrights data
 const getAllWainwrights = async () => {
     const response = await fetch("https://raw.githubusercontent.com/annahndr/annahndr.github.io/master/wainwrights_data/wainwrights.json")
-    const data =  await response.json();
-    dataWainwrights = data;
-    headerMessage("Awaiting API...");
-    mapWainwrights(data); 
+    if(response.ok){
+        const data =  await response.json();
+        dataWainwrights = data;
+        headerMessage("Awaiting API...");
+        mapWainwrights(data);
+    }
 }
 
 
