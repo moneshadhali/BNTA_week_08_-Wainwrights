@@ -2,6 +2,15 @@ let dataWainwrights;
 const wainwrightsList = document.getElementById("wainwrights-list"); //ul
 const wainwrightsContainer = document.getElementById("wainwrightsContainer"); //section
 
+//Get data from form
+const form = document.getElementById("WainwrightForm");
+form.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    let userInput = evt.target[0].value;
+
+    console.log(userInput);
+})
+
 
 //GET all Wainwrights data
 const getAllWainwrights = async () => {
