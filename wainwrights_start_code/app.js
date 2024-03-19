@@ -14,6 +14,11 @@ form.addEventListener("submit", (evt) => {
     const filterResult = dataWainwrights.filter(element => element.name.toLowerCase().includes(userInput.toLowerCase()));
     mapWainwrights(filterResult);
 
+    if(filterResult.length == 0){
+        let errorMsg = document.createElement("p");
+        errorMsg.innerText = "The query entered does not exist inside the array"
+        wainwrightsContainer.appendChild(errorMsg);
+    }
 })
 
 
